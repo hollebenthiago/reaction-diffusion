@@ -38,18 +38,6 @@ function setup() {
         }
     }
 
-    for (var i = 40; i < 50; i++) {
-        for (var j = 140; j < 150; j++) {
-            grid[i][j].b = 1;
-        }
-    }
-
-    for (var i = 140; i < 150; i++) {
-        for (var j = 40; j < 50; j++) {
-            grid[i][j].b = 1;
-        }
-    }
-
     document.getElementById('defaultCanvas0').addEventListener('mousedown', checkMouseTouch)
     document.addEventListener('mouseup', checkMouseTouch)
     document.getElementById('defaultCanvas0').addEventListener('touchstart', checkMouseTouch)
