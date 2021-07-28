@@ -10,6 +10,11 @@ var f = 0.055;
 var k = 0.062;
 var dt = 1;
 
+var mouseDown = false;
+var touching = false;
+var mousepos;
+var clickpos;
+
 
 
 //SETUP FUNCTION
@@ -45,23 +50,18 @@ function setup() {
         }
     }
 
-    // for (var i = t * 20; i < t * 20 + 5; i++) {
-    //     for (var j = t * 20; j < t * 20 + 5; j++) {
-    //         grid[i][j].b = 1;
-    //     }
-    // }
-    // for (var t = 1; t < 9; t++) {
-    //     for (var i = t * 20; i < t * 20 + 5; i++) {
-    //         for (var j = t * 20; j < t * 20 + 5; j++) {
-    //             grid[i][j].b = 1;
-    //         }
-    //     }
-    // }
+    document.getElementById('defaultCanvas0').addEventListener('mousedown', checkMouseTouch)
+    document.addEventListener('mouseup', checkMouseTouch)
+    document.getElementById('defaultCanvas0').addEventListener('touchstart', checkMouseTouch)
+    document.getElementById('defaultCanvas0').addEventListener('touchend', checkMouseTouch)
+    document.getElementById('defaultCanvas0').addEventListener('mousemove', addB)
+    document.getElementById('defaultCanvas0').addEventListener('touchmove', addB)
+    // document.getElementById('defaultCanvas0').addEventListener('click', setStartEnd)    
+    // document.getElementById('defaultCanvas0').addEventListener('touchstart', setStartEnd)
 }
 
 //LOOP
 function draw() {
-    // background(51);
 
     for (var x = 1; x < width - 1; x++) {
         for (var y = 1; y < height - 1; y++) {
@@ -137,16 +137,47 @@ function laplace(x, y, z) {
     sum += grid[x + 1][y + 1][z] * 0.05;
     return sum
 }
-// function windowResized() {
-//     w = windowWidth - 50
-//     h = 2 * windowHeight/3
-//     resizeCanvas(w, h);
-//     let btns = document.getElementsByTagName('button')
-//     // for (let i = 0; i < buttons.length; i++) {
-//     //     btns[i].style.width = String((windowHeight - 50)/15).concat('px');
-//     //     btns[i].style.fontSize = String((windowHeight - 50)/90).concat('px');        
-//     // }
-//     // for (let i = 0; i < selects.length; i++) {
-//     //     document.getElementsByTagName('select')[i].style.width = String((windowHeight - 50)).concat('px');
-//     // }
-// }
+
+
+function checkMouseTouch(event) {
+    //maybe i only need 2 ifs, cause its either mouse or touch
+    if (event.type == 'mousedown') {
+        mouseDown = true;
+    }
+    else if (event.type == 'mouseup') {
+        mouseDown = false;
+    }
+    else if (event.type == 'touchstart') {
+        touching = true;
+    }
+    else if (event.type == 'touchend') {
+        touching = false;
+    }
+}
+
+function addB(event) {
+    var rect = document.getElementById('defaultCanvas0').getBoundingClientRect();
+    if (event.type == 'mousemove') {
+        mousepos = {x: (event.clientX - rect.left) / (rect.right - rect.left) * w,
+                    y: (event.clientY - rect.top) / (rect.bottom - rect.top) * h
+        }
+    }
+    else if (event.type == 'touchmove') {
+        mousepos = {x: (event.touches[0].clientX - rect.left) / (rect.right - rect.left) * w,
+                    y: (event.touches[0].clientY - rect.top) / (rect.bottom - rect.top) * h
+        }
+    }
+
+    let oneEnd = getSpot(mousepos);
+
+    if (touching || mouseDown) {
+        grid[oneEnd[x]][oneEnd[y]].b = 1
+    }
+}
+
+function getSpot(mousepos){
+    let theI = Math.floor(mousepos.x/(w/rows))
+    let theJ = Math.floor(mousepos.y/(h/cols))
+    return {i: theI,
+            j: theJ}
+}
