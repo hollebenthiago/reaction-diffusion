@@ -171,13 +171,13 @@ function addB(event) {
     let oneEnd = getSpot(mousepos);
 
     if (touching || mouseDown) {
-        grid[oneEnd[x]][oneEnd[y]].b = 1
+        grid[oneEnd['x']][oneEnd['y']].b = 1
     }
 }
 
 function getSpot(mousepos){
-    let theI = Math.floor(mousepos.x/(w/rows))
-    let theJ = Math.floor(mousepos.y/(h/cols))
+    let theI = Math.floor(mousepos.x/(w))
+    let theJ = Math.floor(mousepos.y/(h))
     return {i: theI,
             j: theJ}
 }
