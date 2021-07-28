@@ -11,7 +11,12 @@ var dt = 1;
 
 //SETUP FUNCTION
 function setup() {
-    createCanvas(200, 200);
+
+    var cnvs = createCanvas(200, 200);
+    cnvs.style.margin = '0 auto';
+    cnvs.parent('canvasHere');
+    var canvas = document.getElementById('defaultCanvas0');
+
     pixelDensity(1);
 
     grid = [];
