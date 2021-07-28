@@ -168,10 +168,10 @@ function addB(event) {
         }
     }
 
-    let oneEnd = getSpot(mousepos);
+    // let oneEnd = getSpot(mousepos);
 
     if (touching || mouseDown) {
-        grid[oneEnd['x']][oneEnd['y']].b = 1
+        grid[mousepos['x']][mousepos['y']].b = 1
     }
 }
 
