@@ -1,5 +1,5 @@
-var w = 600;
-var h = 400;
+var w = 200;
+var h = 200;
 
 var grid;
 var next;
@@ -16,7 +16,7 @@ var dt = 1;
 function setup() {
 
     var cnvs = createCanvas(w, h);
-    cnvs.style.margin = '0 auto';
+    cnvs.style.border = 'border: 1px solid black';
     cnvs.parent('canvasHere');
     var canvas = document.getElementById('defaultCanvas0');
 
