@@ -1,3 +1,6 @@
+var w = 600;
+var h = 400;
+
 var grid;
 var next;
 
@@ -12,7 +15,7 @@ var dt = 1;
 //SETUP FUNCTION
 function setup() {
 
-    var cnvs = createCanvas(200, 200);
+    var cnvs = createCanvas(w, h);
     cnvs.style.margin = '0 auto';
     cnvs.parent('canvasHere');
     var canvas = document.getElementById('defaultCanvas0');
