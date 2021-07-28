@@ -171,7 +171,7 @@ function addB(event) {
     // let oneEnd = getSpot(mousepos);
 
     if (touching || mouseDown) {
-        grid[mousepos['x']][mousepos['y']].b = 1
+        grid[floor(mousepos['x'])][floor(mousepos['y'])].b = 1
     }
 }
 
