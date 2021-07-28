@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 permalink: /notes/:year/:month/:day/:title
 markdown: kramdown
+=======
+theme: jekyll-theme-cayman
+>>>>>>> 704115717ee5f0bac3a08b6fa86b877e198cedee
