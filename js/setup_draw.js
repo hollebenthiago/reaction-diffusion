@@ -16,10 +16,10 @@ var dt = 1;
 function setup() {
 
     var cnvs = createCanvas(w, h);
-    cnvs.style.border = 'border: 1px solid black';
+    // cnvs.style.border = 'border: 1px solid black';
     cnvs.parent('canvasHere');
     var canvas = document.getElementById('defaultCanvas0');
-
+    canvas.style.border = "1px solid black";
     pixelDensity(1);
 
     grid = [];
