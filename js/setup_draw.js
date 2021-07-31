@@ -173,8 +173,8 @@ function getSpot(mousepos){
             j: theJ}
 }
 
-slider = document.getElementById("slider");
-selector = document.getElementById("slider");
+slider = document.getElementById("sliderfeed");
+selector = document.getElementById("selector");
 SelectValue = document.getElementById("SelectValue");
 ProgressBar = document.getElementById("ProgressBar");
 
