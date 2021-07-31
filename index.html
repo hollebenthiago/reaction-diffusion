@@ -19,15 +19,12 @@ description:  Gray-Scott Reaction-Diffusion model.
         <div id='canvasHere' style="margin: 0 auto">
             <script src="js/setup_draw.js"></script>
         </div>
-        <div class="sliders">
-            Feed parameter: <input type="range" min="0.01" max="0.1" value="0.055" id="sliderfeed"> 
-            <div id="selector">
-                <div class="SelectBtn">
-                </div>
-                <div id="SelectValue">
-                </div>
+        <div class="slideContainer">
+            <input type="range" min="0.01" max="0.1" value="0.055" step ="0.001" id="myRangeFeed" class="slider feed">
+            <p class="textSlider">Feed rate: <span id="valueFeed"></span></p>
+        
+            <input type="range" min="0.045" max="0.07" value="0.062" step ="0.001" id="myRangeKill" class="slider kill">
+                <p class="textSlider">Kill rate: <span id="valueKill"></span></p>
             </div>
-            <div id="ProgressBar"></div>
-        </div>
     </div>
 </div>

@@ -1,75 +1,71 @@
-.sliders{
-    width: 60%;
-    margin: 24% auto;
-    position: relative;
+.textSlider {
+    margin-top: 50px;
+    opacity: 0.7;
 }
 
-#sliderfeed{
+.slideContainer{
+    width: 75%;
+    margin-top: 200px;
+}
+
+.slider::before {
+    /* content: '0.01'; */
+    color: black;
+    font-size: 2rem;
+    position: absolute;
+    left: 1%;
+    top: 26%;
+}
+
+.slider::after {
+    /* content: '0.1'; */
+    color: black;
+    font-size: 2rem;
+    position: absolute;
+    left: 75%;
+    top: 26%;
+}
+
+.feed{
+    background: linear-gradient(90deg, rgb(159, 41, 163) 50%, rgb(214, 214, 214) 50%);
+
+}
+.kill {
+    background: linear-gradient(90deg, rgb(159, 41, 163) 68%, rgb(214, 214, 214) 68%);
+
+}
+.slider{
     -webkit-appearance: none;
     width: 100%;
-    height: 7px;
+    height: 20px;
+    /* background: linear-gradient(90deg, rgb(117, 252, 117) 55%, rgb(214, 214, 214) 60%); */
     outline: none;
-    border-radius: 3px;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    border-radius: 12px;
+    box-shadow: 0px 1px 10px 1px black;
 }
 
-#sliderfeed::-webkit-slider-thumb{
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-    z-index: 3;
-    position: relative;
-}
-#selector{
-    height: 104px;
-    width: 48px;
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-}
-
-.SelectBtn{
-    height: 48px;
-    width: 48px;
-    background-image: url(../img/icon.jpg);
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 0;
-}
-
-#SelectValue{
-    width: 48px;
+    appearance: none;
+    width: 40px;
     height: 40px;
-    position: absolute;
-    top: 0;
-    background: #ffd200;
-    border-radius: 4px;
-    text-align: center;
-    line-height: 45px;
-    font-size: 20px;
-    font-weight: bold;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-#SelectValue::after{
-    content: '';
-    border-top: 17px solid #ffd200;
-    border-left: 24px solid #ffff;
-    border-right: 24px solid #ffff;
-    position: absolute;
-    bottom: -14px;
-    left: 0;
+.slider::-moz-range-thumb {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-#ProgressBar{
-    width: 50%;
-    height: 7px;
-    background: #ffd200;
-    border-radius: 3px;
-    position: absolute;
-    top: 0;
-    left: 0;
-}

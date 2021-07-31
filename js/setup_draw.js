@@ -15,11 +15,6 @@ let touching = false;
 let mousepos;
 let clickpos;
 
-let slider;
-let selector;
-let SelectValue;
-let ProgressBar;
-
 //SETUP FUNCTION
 function setup() {
 
@@ -54,7 +49,8 @@ function setup() {
 
 //LOOP
 function draw() {
-
+    k = sliderkill.value;
+    f = sliderfeed.value;
     for (let x = 1; x < width - 1; x++) {
         for (let y = 1; y < height - 1; y++) {
             let a = grid[x][y].a
