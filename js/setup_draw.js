@@ -72,13 +72,13 @@ function draw() {
             let a = next[x][y].a;
             let b = next[x][y].b;
             let c = constrain(a - b, 0, 1);
-            let red = constrain(3 * c * 255, 0, 255);
-            let green = constrain(1 * c * 255, 0, 255);
-            let blue = constrain(2 * c * 255, 0, 255);
+            let red = constrain(1.5 * c * 255, 0, 255);
+            let green = constrain(2.1 * c * 255, 0, 255);
+            let blue = constrain(3 * c * 255, 0, 255);
             pixels[pix + 0] = red;
             pixels[pix + 1] = green;
             pixels[pix + 2] = blue;
-            pixels[pix + 3] = 255;
+            pixels[pix + 3] = 130 + 125 * c;
         }
     }
     for (let x = 0; x < width; x++) {

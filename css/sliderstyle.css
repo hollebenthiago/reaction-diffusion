@@ -27,11 +27,11 @@
 }
 
 .feed{
-    background: linear-gradient(90deg, rgb(159, 41, 163) 50%, rgb(214, 214, 214) 50%);
+    background: linear-gradient(90deg, rgb(66, 139, 202) 50%, rgb(214, 214, 214) 50%);
 
 }
 .kill {
-    background: linear-gradient(90deg, rgb(159, 41, 163) 68%, rgb(214, 214, 214) 68%);
+    background: linear-gradient(90deg, rgb(66, 139, 202) 68%, rgb(214, 214, 214) 68%);
 
 }
 .slider{

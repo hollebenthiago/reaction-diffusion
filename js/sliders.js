@@ -23,12 +23,12 @@ sliderkill.oninput = function() {
 
 sliderfeed.addEventListener("mousemove", function() {
     let x = sliderfeed.value;
-    let color = 'linear-gradient(90deg, rgb(159, 41, 163) ' + (x - 0.01) * 1110 + '%, rgb(214, 214, 214) ' + (x - 0.01) * 1110 + '%)'; 
+    let color = 'linear-gradient(90deg, rgb(66, 139, 202) ' + (x - 0.01) * 1110 + '%, rgb(214, 214, 214) ' + (x - 0.01) * 1110 + '%)'; 
     sliderfeed.style.background = color;
 })
 
 sliderkill.addEventListener("mousemove", function() {
     let x = sliderkill.value;
-    let color = 'linear-gradient(90deg, rgb(159, 41, 163) ' + (x - 0.045) * 3999 + '%, rgb(214, 214, 214) ' + (x - 0.045) * 3999 + '%)'; 
+    let color = 'linear-gradient(90deg, rgb(66, 139, 202) ' + (x - 0.045) * 3999 + '%, rgb(214, 214, 214) ' + (x - 0.045) * 3999 + '%)'; 
     sliderkill.style.background = color;
 })
