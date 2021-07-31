@@ -173,15 +173,15 @@ function getSpot(mousepos){
             j: theJ}
 }
 
-slider = document.getElementById("sliderfeed");
-selector = document.getElementById("selector");
-SelectValue = document.getElementById("SelectValue");
-ProgressBar = document.getElementById("ProgressBar");
+// slider = document.getElementById("sliderfeed");
+// selector = document.getElementById("selector");
+// SelectValue = document.getElementById("SelectValue");
+// ProgressBar = document.getElementById("ProgressBar");
 
-SelectValue.innerHTML = slider.value;
+// SelectValue.innerHTML = slider.value;
 
-slider.oninput = function(){
-    SelectValue.innerHTML = this.value;
-    selector.style.left = this.value + "%";
-    ProgressBar.style.width = this.value + "%";
-}
+// slider.oninput = function(){
+//     SelectValue.innerHTML = this.value;
+//     selector.style.left = this.value + "%";
+//     ProgressBar.style.width = this.value + "%";
+// }
