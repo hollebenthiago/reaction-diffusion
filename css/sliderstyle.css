@@ -33,7 +33,7 @@
 .SelectBtn{
     height: 48px;
     width: 48px;
-    background-image: url(img/icon.jpg);
+    background-image: url(../img/icon.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 50%;
