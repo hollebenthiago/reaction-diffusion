@@ -33,7 +33,7 @@
 .SelectBtn{
     height: 48px;
     width: 48px;
-    background-image: url(icon.png);
+    background-image: url(img/icon.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 50%;
@@ -57,8 +57,8 @@
 #SelectValue::after{
     content: '';
     border-top: 17px solid #ffd200;
-    border-left: 24px solid #000;
-    border-right: 24px solid #000;
+    border-left: 24px solid #ffff;
+    border-right: 24px solid #ffff;
     position: absolute;
     bottom: -14px;
     left: 0;
