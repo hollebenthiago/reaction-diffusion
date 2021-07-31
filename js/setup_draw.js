@@ -1,19 +1,19 @@
-var w = 200;
-var h = 200;
+let w = 200;
+let h = 200;
 
-var grid;
-var next;
+let grid;
+let next;
 
-var dA = 1;
-var dB = 0.5;
-var f = 0.055;
-var k = 0.062;
-var dt = 1;
+let dA = 1;
+let dB = 0.5;
+let f = 0.055;
+let k = 0.062;
+let dt = 1;
 
-var mouseDown = false;
-var touching = false;
-var mousepos;
-var clickpos;
+let mouseDown = false;
+let touching = false;
+let mousepos;
+let clickpos;
 
 
 
@@ -29,10 +29,10 @@ function setup() {
 
     grid = [];
     next = [];
-    for (var x = 0; x < width; x++) {
+    for (let x = 0; x < width; x++) {
         grid[x] = [];
         next[x] = [];
-        for (var y = 0; y < height; y++) {
+        for (let y = 0; y < height; y++) {
             grid[x][y] = {a: 1, b: 0};
             next[x][y] = {a: 1, b: 0};
         }
@@ -51,10 +51,10 @@ function setup() {
 //LOOP
 function draw() {
 
-    for (var x = 1; x < width - 1; x++) {
-        for (var y = 1; y < height - 1; y++) {
-            var a = grid[x][y].a
-            var b = grid[x][y].b
+    for (let x = 1; x < width - 1; x++) {
+        for (let y = 1; y < height - 1; y++) {
+            let a = grid[x][y].a
+            let b = grid[x][y].b
             next[x][y].a = a + (dA * laplace(x, y, "a") -  a * b * b + f * (1 - a)) * dt;
             next[x][y].b = b + (dB * laplace(x, y, "b") +  a * b * b - b * (k + f)) * dt;
             
@@ -66,28 +66,27 @@ function draw() {
     
 
     loadPixels();
-    for (var x = 0; x < width; x++) {
-        for (var y = 0; y < height; y++) {
-            var pix = (x + y * width) * 4;
-            var a = next[x][y].a;
-            var b = next[x][y].b;
-            var c = a - b;
-            var c = constrain(a - b, 0, 1);
-            var r = constrain(3 * c * 255, 0, 255);
-            var g = constrain(1 * c * 255, 0, 255);
-            var b = constrain(2 * c * 255, 0, 255);
+    for (let x = 0; x < width; x++) {
+        for (let y = 0; y < height; y++) {
+            let pix = (x + y * width) * 4;
+            let a = next[x][y].a;
+            let b = next[x][y].b;
+            let c = constrain(a - b, 0, 1);
+            let r = constrain(3 * c * 255, 0, 255);
+            let g = constrain(1 * c * 255, 0, 255);
+            let b = constrain(2 * c * 255, 0, 255);
             pixels[pix + 0] = r;
             pixels[pix + 1] = g;
             pixels[pix + 2] = b;
             pixels[pix + 3] = 255;
         }
     }
-    for (var x = 0; x < width; x++) {
+    for (let x = 0; x < width; x++) {
         next[x][height -1].a = 1;
         next[x][0].a = 1;
     }
 
-    for (var y = 0; x < height; y++) {
+    for (let y = 0; x < height; y++) {
         next[width - 1][y].b = 0
         next[0][y].b = 0
     }
@@ -97,14 +96,14 @@ function draw() {
 }
 
 function swap() {
-    var temp = grid;
+    let temp = grid;
     grid = next;
     next = temp;
     
 }
 
 function laplace(x, y, z) {
-    var sum = 0;
+    let sum = 0;
 
     sum += grid[x][y][z] * - 1;
 
@@ -144,7 +143,7 @@ function checkMouseTouch(event) {
 }
 
 function addB(event) {
-    var rect = document.getElementById('defaultCanvas0').getBoundingClientRect();
+    let rect = document.getElementById('defaultCanvas0').getBoundingClientRect();
     if (event.type == 'mousemove') {
         mousepos = {x: (event.clientX - rect.left) / (rect.right - rect.left) * w,
                     y: (event.clientY - rect.top) / (rect.bottom - rect.top) * h
