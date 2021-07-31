@@ -13,11 +13,21 @@ description:  Gray-Scott Reaction-Diffusion model.
     <div class='title' style='margin: 0 auto;'>
         <h1>Gray-Scott Reaction Diffusion model</h1>
         <ul>
-            <li>Click (or touch!) the area below</li>
+            <li>Click (or touch!) and drag in the area below</li>
         </ul>
         <div id='buttonsHere' style="margin: 0 auto"></div>
         <div id='canvasHere' style="margin: 0 auto">
             <script src="js/setup_draw.js"></script>
+        </div>
+        <div class="sliders">
+            <input type="range" min="0.01" max="0.1" value="0.055" id="sliderfeed">
+            <div id="selector">
+                <div class="SelectBtn">
+                </div>
+                <div id="SelectValue">
+                </div>
+            </div>
+            <div id="ProgressBar"></div>
         </div>
     </div>
 </div>

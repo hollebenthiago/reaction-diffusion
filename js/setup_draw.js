@@ -15,7 +15,10 @@ let touching = false;
 let mousepos;
 let clickpos;
 
-
+let slider;
+let selector;
+let SelectValue;
+let ProgressBar;
 
 //SETUP FUNCTION
 function setup() {
@@ -37,6 +40,7 @@ function setup() {
             next[x][y] = {a: 1, b: 0};
         }
     }
+
 
     document.getElementById('defaultCanvas0').addEventListener('mousedown', checkMouseTouch)
     document.addEventListener('mouseup', checkMouseTouch)
@@ -72,12 +76,12 @@ function draw() {
             let a = next[x][y].a;
             let b = next[x][y].b;
             let c = constrain(a - b, 0, 1);
-            let r = constrain(3 * c * 255, 0, 255);
-            let g = constrain(1 * c * 255, 0, 255);
-            let b = constrain(2 * c * 255, 0, 255);
-            pixels[pix + 0] = r;
-            pixels[pix + 1] = g;
-            pixels[pix + 2] = b;
+            let red = constrain(3 * c * 255, 0, 255);
+            let green = constrain(1 * c * 255, 0, 255);
+            let blue = constrain(2 * c * 255, 0, 255);
+            pixels[pix + 0] = red;
+            pixels[pix + 1] = green;
+            pixels[pix + 2] = blue;
             pixels[pix + 3] = 255;
         }
     }
@@ -167,4 +171,17 @@ function getSpot(mousepos){
     let theJ = Math.floor(mousepos.y/(h))
     return {i: theI,
             j: theJ}
+}
+
+slider = document.getElementById("slider");
+selector = document.getElementById("slider");
+SelectValue = document.getElementById("SelectValue");
+ProgressBar = document.getElementById("ProgressBar");
+
+SelectValueValue.innerHTML = slider.value;
+
+slider.oninput = function(){
+    SelectValueValue.innerHTML = this.value;
+    selector.style.left = this.value + "%";
+    ProgressBar.style.width = this.value + "%";
 }
