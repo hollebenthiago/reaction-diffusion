@@ -23,7 +23,7 @@ sliderkill.oninput = function() {
 
 sliderfeed.addEventListener("mousemove", function() {
     let x = sliderfeed.value;
-    let color = 'linear-gradient(90deg, rgb(159, 41, 163) ' + 999 * x + '%, rgb(214, 214, 214) ' + 999 * x + '%)'; 
+    let color = 'linear-gradient(90deg, rgb(159, 41, 163) ' + (x - 0.01) * 1110 + '%, rgb(214, 214, 214) ' + (x - 0.01) * 1110 + '%)'; 
     sliderfeed.style.background = color;
 })
 
