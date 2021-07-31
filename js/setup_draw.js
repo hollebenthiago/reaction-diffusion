@@ -90,7 +90,7 @@ function draw() {
         next[x][0].a = 1;
     }
 
-    for (let y = 0; x < height; y++) {
+    for (let y = 0; y < height; y++) {
         next[width - 1][y].b = 0
         next[0][y].b = 0
     }
@@ -178,10 +178,10 @@ selector = document.getElementById("slider");
 SelectValue = document.getElementById("SelectValue");
 ProgressBar = document.getElementById("ProgressBar");
 
-SelectValueValue.innerHTML = slider.value;
+SelectValue.innerHTML = slider.value;
 
 slider.oninput = function(){
-    SelectValueValue.innerHTML = this.value;
+    SelectValue.innerHTML = this.value;
     selector.style.left = this.value + "%";
     ProgressBar.style.width = this.value + "%";
 }
