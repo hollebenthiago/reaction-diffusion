@@ -1,6 +1,9 @@
 let w = 200;
 let h = 200;
 
+let rows = 100;
+let cols = 100;
+
 let grid;
 let next;
 
@@ -27,10 +30,10 @@ function setup() {
 
     grid = [];
     next = [];
-    for (let x = 0; x < width; x++) {
+    for (let x = 0; x < cols; x++) {
         grid[x] = [];
         next[x] = [];
-        for (let y = 0; y < height; y++) {
+        for (let y = 0; y < rows; y++) {
             grid[x][y] = {a: 1, b: 0};
             next[x][y] = {a: 1, b: 0};
         }
@@ -51,8 +54,8 @@ function setup() {
 function draw() {
     k = parseFloat(sliderkill.value);
     f = parseFloat(sliderfeed.value);
-    for (let x = 1; x < width - 1; x++) {
-        for (let y = 1; y < height - 1; y++) {
+    for (let x = 1; x < cols - 1; x++) {
+        for (let y = 1; y < rows - 1; y++) {
             let a = grid[x][y].a
             let b = grid[x][y].b
             next[x][y].a = a + (dA * laplace(x, y, "a") -  a * b * b + f * (1 - a)) * dt;
@@ -69,25 +72,25 @@ function draw() {
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
             let pix = (x + y * width) * 4;
-            let a = next[x][y].a;
-            let b = next[x][y].b;
-            let c = constrain(a - b, 0, 1);
+            let a = next[floor(x * (cols/width))][floor(y * (rows/height))].a;
+            let b = next[floor(x * (cols/width))][floor(y * (rows/height))].b;
+            let c = constrain(a - b, 0, 1); // b
             let red = constrain(1.5 * c * 255, 0, 255);
             let green = constrain(2.1 * c * 255, 0, 255);
             let blue = constrain(3 * c * 255, 0, 255);
             pixels[pix + 0] = red;
             pixels[pix + 1] = green;
             pixels[pix + 2] = blue;
-            pixels[pix + 3] = 130 + 125 * c;
+            pixels[pix + 3] = 130 + 125 * c; // 200 + c
         }
     }
-    for (let x = 0; x < width; x++) {
-        next[x][height -1].a = 1;
+    for (let x = 0; x < colls; x++) {
+        next[x][rows -1].a = 1;
         next[x][0].a = 1;
     }
 
-    for (let y = 0; y < height; y++) {
-        next[width - 1][y].b = 0
+    for (let y = 0; y < rows; y++) {
+        next[cols - 1][y].b = 0
         next[0][y].b = 0
     }
     updatePixels();
@@ -158,7 +161,7 @@ function addB(event) {
     // let oneEnd = getSpot(mousepos);
 
     if (touching || mouseDown) {
-        grid[floor(mousepos['x'])][floor(mousepos['y'])].b = 1
+        grid[floor(mousepos['x'] * (cols/width))][floor(mousepos['y'] * (rows/height))].b = 1
     }
 }
 
