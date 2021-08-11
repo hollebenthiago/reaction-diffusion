@@ -1,8 +1,8 @@
-let w = 200;
-let h = 200;
+let w = 400;
+let h = 400;
 
-let rows = 100;
-let cols = 100;
+let rows = 200;
+let cols = 200;
 
 let grid;
 let next;
@@ -161,8 +161,8 @@ function addB(event) {
     // let oneEnd = getSpot(mousepos);
 
     if (touching || mouseDown) {
-        let u = mousepos['x'] * (cols/width);
-        let v = mousepos['y'] * (rows/height);
+        let u = floor(mousepos['x'] * (cols/width));
+        let v = floor(mousepos['y'] * (rows/height));
         grid[u][v].b = 1
         if (u != 0) {
             grid[u - 1][v].b = 0.4
