@@ -54,6 +54,7 @@ function setup() {
 function draw() {
     k = parseFloat(sliderkill.value);
     f = parseFloat(sliderfeed.value);
+    loadPixels();
     for (let x = 1; x < cols - 1; x++) {
         for (let y = 1; y < rows - 1; y++) {
             let a = grid[x][y].a
@@ -63,27 +64,52 @@ function draw() {
             
             next[x][y].a = constrain(next[x][y].a, 0, 1);
             next[x][y].b = constrain(next[x][y].b, 0, 1);
+
+            let p1 = ((x * floor(width/cols)) + (y * floor(height/rows)) * width) * 4;
+            let p2 = ((x * floor(width/cols)) + (y * floor(height/rows) + 1) * width) * 4;
+            let p3 = ((x * floor(width/cols) + 1) + (y * floor(height/rows) + 1) * width) * 4;
+            let p4 = ((x * floor(width/cols) + 1) + (y * floor(height/rows)) * width) * 4;
+            
+            let c = constrain(next[x][y].a - next[x][y].b, 0, 1); // b
+            let red = constrain(1.5 * c * 255, 0, 255);
+            let green = constrain(2.1 * c * 255, 0, 255);
+            let blue = constrain(3 * c * 255, 0, 255);
+            pixels[p1 + 0] = red;
+            pixels[p1 + 1] = green;
+            pixels[p1 + 2] = blue;
+            pixels[p1 + 3] = 130 + 125 * c; // 200 + c
+            pixels[p2 + 0] = red;
+            pixels[p2 + 1] = green;
+            pixels[p2 + 2] = blue;
+            pixels[p2 + 3] = 130 + 125 * c; // 200 + c
+            pixels[p3 + 0] = red;
+            pixels[p3 + 1] = green;
+            pixels[p3 + 2] = blue;
+            pixels[p3 + 3] = 130 + 125 * c; // 200 + c
+            pixels[p4 + 0] = red;
+            pixels[p4 + 1] = green;
+            pixels[p4 + 2] = blue;
+            pixels[p4 + 3] = 130 + 125 * c; // 200 + c
         }
     }
 
     
-
-    loadPixels();
-    for (let x = 0; x < width; x++) {
-        for (let y = 0; y < height; y++) {
-            let pix = (x + y * width) * 4;
-            let a = next[floor(x * (cols/width))][floor(y * (rows/height))].a;
-            let b = next[floor(x * (cols/width))][floor(y * (rows/height))].b;
-            let c = constrain(a - b, 0, 1); // b
-            let red = constrain(1.5 * c * 255, 0, 255);
-            let green = constrain(2.1 * c * 255, 0, 255);
-            let blue = constrain(3 * c * 255, 0, 255);
-            pixels[pix + 0] = red;
-            pixels[pix + 1] = green;
-            pixels[pix + 2] = blue;
-            pixels[pix + 3] = 130 + 125 * c; // 200 + c
-        }
-    }
+    // loadPixels();
+    // for (let x = 0; x < width; x++) {
+    //     for (let y = 0; y < height; y++) {
+    //         let pix = (x + y * width) * 4;
+    //         let a = next[floor(x * (cols/width))][floor(y * (rows/height))].a;
+    //         let b = next[floor(x * (cols/width))][floor(y * (rows/height))].b;
+    //         let c = constrain(a - b, 0, 1); // b
+    //         let red = constrain(1.5 * c * 255, 0, 255);
+    //         let green = constrain(2.1 * c * 255, 0, 255);
+    //         let blue = constrain(3 * c * 255, 0, 255);
+    //         pixels[pix + 0] = red;
+    //         pixels[pix + 1] = green;
+    //         pixels[pix + 2] = blue;
+    //         pixels[pix + 3] = 130 + 125 * c; // 200 + c
+    //     }
+    // }
     for (let x = 0; x < cols; x++) {
         next[x][rows -1].a = 1;
         next[x][0].a = 1;
