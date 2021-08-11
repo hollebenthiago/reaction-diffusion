@@ -84,7 +84,7 @@ function draw() {
             pixels[pix + 3] = 130 + 125 * c; // 200 + c
         }
     }
-    for (let x = 0; x < colls; x++) {
+    for (let x = 0; x < cols; x++) {
         next[x][rows -1].a = 1;
         next[x][0].a = 1;
     }
@@ -161,7 +161,33 @@ function addB(event) {
     // let oneEnd = getSpot(mousepos);
 
     if (touching || mouseDown) {
-        grid[floor(mousepos['x'] * (cols/width))][floor(mousepos['y'] * (rows/height))].b = 1
+        let u = mousepos['x'] * (cols/width);
+        let v = mousepos['y'] * (rows/height);
+        grid[u][v].b = 1
+        if (u != 0) {
+            grid[u - 1][v].b = 0.4
+        }
+        if (u != cols - 1) {
+            grid[u + 1][v].b = 0.4
+        }
+        if (v != 0) {
+            grid[u][v - 1].b = 0.4
+        }
+        if (v != rows - 1) {
+            grid[u][v + 1].b = 0.4
+        } 
+        if (u != 0 && v != 0) {
+            grid[u - 1][v - 1].b = 0.2
+        }
+        if (u != 0 && v != rows - 1) {
+            grid[u - 1][v + 1].b = 0.2
+        }
+        if (u != cols - 1 && v != 0) {
+            grid[u + 1][v - 1].b = 0.2
+        }
+        if (u != cols - 1 && v != rows - 1) {
+            grid[u + 1][v + 1].b = 0.2
+        }
     }
 }
 
